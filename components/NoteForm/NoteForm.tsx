@@ -39,17 +39,11 @@ const NoteForm = ({ onClose }: NoteFormProps) => {
     mutationFn: createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
-      onClose();
     },
   });
 
-  const handleSubmit = (
-    values: DefaultFormDataProps,
-    formikHeelpers: FormikHelpers<DefaultFormDataProps>
-  ) => {
+  const handleSubmit = (values: DefaultFormDataProps) => {
     mutation.mutate(values);
-    formikHeelpers.resetForm();
-    onClose();
   };
   return (
     <Formik

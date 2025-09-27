@@ -7,17 +7,19 @@ import css from './NoteDetails.module.css';
 
 const NoteDetailsClient = () => {
   const { id } = useParams<{ id: string }>();
-  const { data } = useQuery({
-    queryKey: ['note'],
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
   });
 
-  if (!data) return;
+  if (isLoading) {
+    return <p className={css.text}>Loading, please wait...</p>;
+  }
 
-  const formattedDate = data.updatedAt
-    ? `Updated at: ${data.updatedAt}`
-    : `Created at: ${data.createdAt}`;
+  if (isError || !data) {
+    throw error;
+  }
 
   return (
     <div className={css.container}>
@@ -26,7 +28,7 @@ const NoteDetailsClient = () => {
           <h2>{data.title}</h2>
         </div>
         <p className={css.content}>{data.content}</p>
-        <p className={css.date}>{formattedDate}</p>
+        <p className={css.date}>{data.createdAt}</p>
       </div>
     </div>
   );
