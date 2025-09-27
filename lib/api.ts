@@ -33,12 +33,17 @@ export const fetchNotes = async (
   return res.data;
 };
 
-export const createNote = async (newNote: NewNoteContent) => {
+export const createNote = async (newNote: NewNoteContent): Promise<Note> => {
   const res = await axios.post<Note>('', newNote);
   return res.data;
 };
 
-export const deleteNote = async (id: string) => {
+export const deleteNote = async (id: string): Promise<Note> => {
   const res = await axios.delete<Note>(`/${id}`);
+  return res.data;
+};
+
+export const fetchNoteById = async (id: string): Promise<Note> => {
+  const res = await axios.get(`/${id}`);
   return res.data;
 };
