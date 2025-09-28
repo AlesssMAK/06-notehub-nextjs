@@ -4,7 +4,6 @@ body {
     Cantarell, 'Helvetica Neue', sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   margin: 0;
   background-color: #f8f9fa;
 }
