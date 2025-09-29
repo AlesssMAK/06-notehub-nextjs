@@ -19,7 +19,7 @@ interface NewNoteContent {
 export const fetchNotes = async (
   search: string,
   page: number,
-  perPage = 15
+  perPage = 9
 ): Promise<NoteHttpRequest> => {
   const params = {
     search,
