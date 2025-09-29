@@ -1,6 +1,6 @@
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 362px));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   justify-content: center;
   gap: 16px;
   padding: 16px;
@@ -99,21 +99,9 @@
   background-color: rgb(255, 107, 10);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .list {
     padding: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 350px));
   }
-
-  /* .details {
-    font-size: 12px;
-    min-width: 63px;
-  }
-
-  .tag {
-    font-size: 10px;
-  }
-
-  .button {
-    font-size: 12px;
-  } */
 }
